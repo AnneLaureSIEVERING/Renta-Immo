@@ -7,8 +7,9 @@ let roadworks = document.querySelector('#roadworks');
 let rent = document.querySelector('#rent');
 let button = document.querySelector('#button');
 
-let classRent = document.querySelector('.classRent');
+let classRent = document.querySelector('.rent_input');
 let classResults = document.querySelector('.classResults');
+let displayResults = document.querySelector('.display_results');
 
 let nRent;
 let priceTotal;
@@ -60,6 +61,7 @@ function notaryFees(pxImmo) {
 function displayProfitability(pxTotal, nRtx) {
     let profiTx = profitability(pxTotal, nRtx);
     let displayValueResult = document.createElement('p');
+    displayValueResult.setAttribute("class", "profitability");
     displayValueResult.textContent = 'Rentabilité brute : ' + profiTx + ' %';
     classResults.appendChild(displayValueResult);
 }
@@ -67,12 +69,24 @@ function displayProfitability(pxTotal, nRtx) {
 function displayAmountProfitability(pxTotal, nRent, nYear) {
     let valueAmount = interestCompose(pxTotal, nRent, nYear);
     let displayValueAmount = document.createElement('p');
+    displayValueAmount.setAttribute("class", "profitability");
     displayValueAmount.textContent = 'Rentabilité sur 10 ans : ' + Math.round(valueAmount) + ' €';
     classResults.appendChild(displayValueAmount);
 }
 
+function displayTransition() {
+    const getDisplayResultsValue = window.getComputedStyle(displayResults, null);
+
+    if (getDisplayResultsValue.display === "none") {
+        displayResults.style.display = "block";
+    } else {
+        displayResults.style.display = "none";
+    }
+}
+
 function displayRentByYear(valueRentByYear) {
     let valueRent = document.createElement('p');
+    valueRent.setAttribute("class", "rent_year");
     valueRent.textContent = '(équivaut à ' + valueRentByYear + ' € par an)';
     classRent.appendChild(valueRent);
 }
@@ -100,9 +114,10 @@ price.addEventListener('blur', (e) => {
 button.addEventListener('click', (e)=> {
     e.preventDefault;
     priceTotal = totaPriceImmo(price, notary, agency, roadworks);
-    
+
     displayProfitability(priceTotal, nRent);
-    displayAmountProfitability(priceTotal, nRent, 10)
+    displayAmountProfitability(priceTotal, nRent, 10);
+    displayTransition();
 });
 
 

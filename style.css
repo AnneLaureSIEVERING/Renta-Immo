@@ -1,0 +1,166 @@
+/* Style correspond aux différents élements isolés de la page */
+
+body, html {
+    font-family: Circular, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+.container {
+    background-image: url(images/img-renta.webp);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+}
+
+h1 {
+    color: white;
+    font-size: 46px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 30px;
+}
+
+.catchphrase {
+    color: white;
+    font-size: 35px;
+    margin-top: 180px;
+    margin-left: 5em;
+    display: block;
+    position: fixed;
+    width: 15vw;
+    letter-spacing: 0.06em;
+    font-weight: bold;
+}
+
+/* Style des éléments générer avec Javascript suite à un Event */
+
+.profitability {
+    display: block;
+    color: black;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #8B8B8B;
+    margin: 50px auto;
+    width: 25vw;
+}
+
+.rent_year {
+    color: #8B8B8B;
+    font-style: italic;
+    font-size: 11px;
+    text-align: center;
+}
+
+.display_results {
+    display: none;
+    height: 50vh;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100vw;
+    background: white;
+    transition: all 1s;
+}
+
+
+/* Style du formulaire */
+
+.form_immo {
+    display: flex;
+    margin-top: 50px;
+}
+ 
+.search_zone {
+    font-size: 14px;
+    line-height: 1.43;
+    text-align: left;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 32px;
+    color: rgb(34, 34, 34);
+    display: flex;
+    align-items: center;
+    height: 66px;
+    width: 70%;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 16px 32px, rgba(0, 0, 0, 0.1) 0px 3px 8px;
+    background-color: rgb(247, 247, 247);
+    margin: 0 auto;
+}
+
+
+label {
+    font-size: 12px;
+    line-height: 1.43;
+    text-align: center;
+    color: rgb(34, 34, 34);
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    border: 1px solid transparent;
+    border-radius: 32px;
+    padding: 3px 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+form > div > div {
+    font-size: 14px;
+    line-height: 1.43;
+    text-align: left;
+    color: rgb(34, 34, 34);
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    border-right: 1px solid #DDDDDD;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+input {
+    box-sizing: border-box;
+    font-family: inherit;
+    display: block;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    background: none;
+    font-size: 12px;
+    line-height: 1.43;
+    font-weight: 600;
+    color: #222222;
+    text-align: center;
+    outline-style: none;
+}
+
+/* Style correspond au boutton du formulaire */
+
+button {
+    background:  radial-gradient( rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: block;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    outline: none;
+    overflow: hidden;
+    padding: 12px;
+    text-decoration: none;
+    border-radius: 24px;
+    margin: auto;
+    border: 2px solid grey;
+}
+
+.button {
+    text-align: center;
+    color: rgb(34, 34, 34);
+    box-sizing: border-box;
+    border-right: none;
+    padding: 5px;
+}
