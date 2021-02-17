@@ -7,7 +7,7 @@ let roadworks = document.querySelector('#roadworks');
 let rent = document.querySelector('#rent');
 let button = document.querySelector('#button');
 
-let classRent = document.querySelector('.classRent');
+let classRent = document.querySelector('.rent_input');
 let classResults = document.querySelector('.classResults');
 
 let nRent;
