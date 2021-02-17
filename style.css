@@ -1,12 +1,17 @@
 /* Style correspond aux différents élements isolés de la page */
 
-body{
+body, html {
+    font-family: Circular, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+.container {
     background-image: url(images/img-renta.webp);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: white;
-    font-family: Circular, BlinkMacSystemFont, Roboto, sans-serif;
+    height: 100vh;
+    width: 100vw;
 }
 
 h1 {
@@ -15,7 +20,7 @@ h1 {
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
-    margin-top: 30px;
+    padding-top: 30px;
 }
 
 .catchphrase {
@@ -33,19 +38,35 @@ h1 {
 /* Style des éléments générer avec Javascript suite à un Event */
 
 .profitability {
+    display: block;
     color: black;
     text-align: center;
     font-size: 25px;
-    margin-top: 28px;
-
+    padding-top: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #8B8B8B;
+    margin: 50px auto;
+    width: 25vw;
 }
 
 .rent_year {
-    color: #FF395B;
+    color: #8B8B8B;
     font-style: italic;
     font-size: 11px;
     text-align: center;
 }
+
+.display_results {
+    display: none;
+    height: 50vh;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100vw;
+    background: white;
+    transition: all 1s;
+}
+
 
 /* Style du formulaire */
 

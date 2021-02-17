@@ -9,6 +9,7 @@ let button = document.querySelector('#button');
 
 let classRent = document.querySelector('.rent_input');
 let classResults = document.querySelector('.classResults');
+let displayResults = document.querySelector('.display_results');
 
 let nRent;
 let priceTotal;
@@ -73,6 +74,16 @@ function displayAmountProfitability(pxTotal, nRent, nYear) {
     classResults.appendChild(displayValueAmount);
 }
 
+function displayTransition() {
+    const getDisplayResultsValue = window.getComputedStyle(displayResults, null);
+
+    if (getDisplayResultsValue.display === "none") {
+        displayResults.style.display = "block";
+    } else {
+        displayResults.style.display = "none";
+    }
+}
+
 function displayRentByYear(valueRentByYear) {
     let valueRent = document.createElement('p');
     valueRent.setAttribute("class", "rent_year");
@@ -103,9 +114,10 @@ price.addEventListener('blur', (e) => {
 button.addEventListener('click', (e)=> {
     e.preventDefault;
     priceTotal = totaPriceImmo(price, notary, agency, roadworks);
-    
+
     displayProfitability(priceTotal, nRent);
-    displayAmountProfitability(priceTotal, nRent, 10)
+    displayAmountProfitability(priceTotal, nRent, 10);
+    displayTransition();
 });
 
 
