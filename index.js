@@ -60,6 +60,7 @@ function notaryFees(pxImmo) {
 function displayProfitability(pxTotal, nRtx) {
     let profiTx = profitability(pxTotal, nRtx);
     let displayValueResult = document.createElement('p');
+    displayValueResult.setAttribute("class", "profitability");
     displayValueResult.textContent = 'Rentabilité brute : ' + profiTx + ' %';
     classResults.appendChild(displayValueResult);
 }
@@ -67,12 +68,14 @@ function displayProfitability(pxTotal, nRtx) {
 function displayAmountProfitability(pxTotal, nRent, nYear) {
     let valueAmount = interestCompose(pxTotal, nRent, nYear);
     let displayValueAmount = document.createElement('p');
+    displayValueAmount.setAttribute("class", "profitability");
     displayValueAmount.textContent = 'Rentabilité sur 10 ans : ' + Math.round(valueAmount) + ' €';
     classResults.appendChild(displayValueAmount);
 }
 
 function displayRentByYear(valueRentByYear) {
     let valueRent = document.createElement('p');
+    valueRent.setAttribute("class", "rent_year");
     valueRent.textContent = '(équivaut à ' + valueRentByYear + ' € par an)';
     classRent.appendChild(valueRent);
 }
