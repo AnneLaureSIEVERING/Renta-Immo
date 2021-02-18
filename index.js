@@ -10,6 +10,8 @@ let button = document.querySelector('#button');
 let classRent = document.querySelector('.rent_input');
 let classResults = document.querySelector('.classResults');
 let displayResults = document.querySelector('.display_results');
+let form = document.querySelector('.form_immo');
+let refresh = document.querySelector('.refresh');
 
 let nRent;
 let priceTotal;
@@ -91,11 +93,11 @@ function displayTransition() {
     const getDisplayResultsValue = window.getComputedStyle(displayResults, null);
 
     if (getDisplayResultsValue.top === "821px") {
-        displayResults.classList.add = 'transition-on';
-        displayResults.classList.remove = 'transition-off';
+        displayResults.classList.add('transition-on');
+        displayResults.classList.remove('transition-off');
     } else {
-        displayResults.classList.add = 'transition-off';
-        displayResults.classList.remove = 'transition-on';
+        displayResults.classList.add('transition-off');
+        displayResults.classList.remove('transition-on');
     }
 }
 
@@ -121,41 +123,49 @@ button.addEventListener('click', (e)=> {
     validateForm(price, agency, roadworks, rent);
 });
 
+refresh.addEventListener('click', () => {
+    window.location.reload();
+});
+
+
 // Gestion des erreurs 
 function validateForm(price, agency, roadworks, rent) {
 
     let errorList = [];
 
     if( price.value === '' ) {
-        price.style.border = '2px solid red';
+        price.style.border = '2px solid #D30A64';
+        price.style.borderRadius = '32px';
         errorList.push(errorList.length + 1);
     } else {
         price.style.border = 'none';
     }
 
     if ( agency.value === '') {
-        agency.style.border = '2px solid red';
+        agency.style.border = '2px solid #D30A64';
+        agency.style.borderRadius = '32px';
         errorList.push(errorList.length + 1);
     } else {
         agency.style.border = 'none';
     }
 
     if ( roadworks.value === '') {
-        roadworks.style.border = '2px solid red';
+        roadworks.style.border = '2px solid #D30A64';
+        roadworks.style.borderRadius = '32px';
         errorList.push(errorList.length + 1);
     } else {
         roadworks.style.border = 'none';
     }
 
     if ( rent.value === '') {
-        rent.style.border = '2px solid red';
+        rent.style.border = '2px solid #D30A64';
+        rent.style.borderRadius = '32px';
         errorList.push(errorList.length + 1);
     } else {
         rent.style.border = 'none';
     }
 
     if(errorList.length === 0) {
-        // console.log(errorList);
         displayProfitability(priceTotal, nRent);
         displayAmountProfitability(priceTotal, nRent, 10);
         displayTransition();
