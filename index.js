@@ -94,6 +94,7 @@ function displayTransition() {
 
     if (getDisplayResultsValue.top === "821px") {
         displayResults.classList.add('transition-on');
+        refresh.style.display = "block";
         displayResults.classList.remove('transition-off');
     } else {
         displayResults.classList.add('transition-off');
