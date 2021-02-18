@@ -10,6 +10,8 @@ let button = document.querySelector('#button');
 let classRent = document.querySelector('.rent_input');
 let classResults = document.querySelector('.classResults');
 let displayResults = document.querySelector('.display_results');
+let form = document.querySelector('.form_immo');
+let refresh = document.querySelector('.refresh');
 
 let nRent;
 let priceTotal;
@@ -57,7 +59,20 @@ function notaryFees(pxImmo) {
     }
 }
 
+
 // Liste des fonctions pour l'intégration dans le DOM des résultats
+
+function displayNotaryFees(valueFees) {
+    notary.setAttribute("value", Math.round(valueFees));
+}
+
+function displayRentByYear(valueRentByYear) {
+    let valueRent = document.createElement('p');
+    valueRent.setAttribute("class", "rent_year");
+    valueRent.textContent = '(équivaut à ' + valueRentByYear + ' € par an)';
+    classRent.appendChild(valueRent);
+}
+
 function displayProfitability(pxTotal, nRtx) {
     let profiTx = profitability(pxTotal, nRtx);
     let displayValueResult = document.createElement('p');
@@ -77,22 +92,13 @@ function displayAmountProfitability(pxTotal, nRent, nYear) {
 function displayTransition() {
     const getDisplayResultsValue = window.getComputedStyle(displayResults, null);
 
-    if (getDisplayResultsValue.display === "none") {
-        displayResults.style.display = "block";
+    if (getDisplayResultsValue.top === "821px") {
+        displayResults.classList.add('transition-on');
+        displayResults.classList.remove('transition-off');
     } else {
-        displayResults.style.display = "none";
+        displayResults.classList.add('transition-off');
+        displayResults.classList.remove('transition-on');
     }
-}
-
-function displayRentByYear(valueRentByYear) {
-    let valueRent = document.createElement('p');
-    valueRent.setAttribute("class", "rent_year");
-    valueRent.textContent = '(équivaut à ' + valueRentByYear + ' € par an)';
-    classRent.appendChild(valueRent);
-}
-
-function displayNotaryFees(valueFees) {
-    notary.setAttribute("value", Math.round(valueFees));
 }
 
 // Event sur la sortie de l'input concernant le loyer pour un affichage dynamique de la somme sur 1 an
@@ -114,11 +120,59 @@ price.addEventListener('blur', (e) => {
 button.addEventListener('click', (e)=> {
     e.preventDefault;
     priceTotal = totaPriceImmo(price, notary, agency, roadworks);
-
-    displayProfitability(priceTotal, nRent);
-    displayAmountProfitability(priceTotal, nRent, 10);
-    displayTransition();
+    validateForm(price, agency, roadworks, rent);
 });
+
+refresh.addEventListener('click', () => {
+    window.location.reload();
+});
+
+
+// Gestion des erreurs 
+function validateForm(price, agency, roadworks, rent) {
+
+    let errorList = [];
+
+    if( price.value === '' ) {
+        price.style.border = '2px solid #D30A64';
+        price.style.borderRadius = '32px';
+        errorList.push(errorList.length + 1);
+    } else {
+        price.style.border = 'none';
+    }
+
+    if ( agency.value === '') {
+        agency.style.border = '2px solid #D30A64';
+        agency.style.borderRadius = '32px';
+        errorList.push(errorList.length + 1);
+    } else {
+        agency.style.border = 'none';
+    }
+
+    if ( roadworks.value === '') {
+        roadworks.style.border = '2px solid #D30A64';
+        roadworks.style.borderRadius = '32px';
+        errorList.push(errorList.length + 1);
+    } else {
+        roadworks.style.border = 'none';
+    }
+
+    if ( rent.value === '') {
+        rent.style.border = '2px solid #D30A64';
+        rent.style.borderRadius = '32px';
+        errorList.push(errorList.length + 1);
+    } else {
+        rent.style.border = 'none';
+    }
+
+    if(errorList.length === 0) {
+        displayProfitability(priceTotal, nRent);
+        displayAmountProfitability(priceTotal, nRent, 10);
+        displayTransition();
+    } else {
+        console.log("Certains champs du formulaire sont manquants");
+    }
+}
 
 
 
