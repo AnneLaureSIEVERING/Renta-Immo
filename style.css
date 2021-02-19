@@ -148,25 +148,24 @@ button {
 
 /** MEDIA QUERIES **/
 
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 321px) and (max-width: 767px) {
     h1 {
         font-size: 46px;
         padding-top: 30px;
     }
     .catchphrase {
-        font-size: 28px;
-        margin-top: 6em;
+        font-size: 18px;
         text-align: center;
-        margin-left: 5em;
-        margin-right: 5em;
+        margin-top: 1em;
     }
+
     /* Style des éléments générer suite à un Event */
     .profitability {
-        font-size: 25px;
+        font-size: 20px;
         padding-top: 28px;
         padding-bottom: 20px;
-        margin: 50px auto;
-        width: 35vw;
+        margin: 20px auto;
+        width: 90vw;
     }
     .rent_year {
         font-size: 9px;
@@ -174,7 +173,7 @@ button {
 
     /* Style du formulaire */
     .form_immo {
-        margin-top: 8em;
+        margin-top: 1.5em;
     }
     .search_zone {
         font-size: 14px;
@@ -186,8 +185,8 @@ button {
     .zone_input {
         font-size: 14px;
         line-height: 1.43;
-        margin: 20px 15px;
-        width: 95%;
+        margin: 20px 20px;
+        width: 80%;
         border-bottom: 1px solid #DDDDDD;
         padding-bottom: 5px;
     }
@@ -234,7 +233,7 @@ button {
         padding-top: 28px;
         padding-bottom: 20px;
         margin: 50px auto;
-        width: 35vw;
+        width: 50vw;
     }
     .rent_year {
         font-size: 9px;
