@@ -92,8 +92,9 @@ function displayAmountProfitability(pxTotal, nRent, nYear) {
 function displayTransition() {
     const getDisplayResultsValue = window.getComputedStyle(displayResults, null);
 
-    if (getDisplayResultsValue.top === "821px") {
+    if (getDisplayResultsValue.top === "100%") {
         displayResults.classList.add('transition-on');
+        displayResults.style.display = "block";
         refresh.style.display = "block";
         displayResults.classList.remove('transition-off');
     } else {

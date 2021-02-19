@@ -53,6 +53,7 @@ h1 {
     width: 100vw;
     background: white;
     transition: all 0.5s;
+    display: none;
 }
 
 .display_results.transition-on {
