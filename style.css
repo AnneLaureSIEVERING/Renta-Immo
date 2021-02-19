@@ -1,6 +1,7 @@
 /* Style GENERAL correspond aux différents élements de la page */
 
-body, html {
+body,
+html {
     font-family: Circular, BlinkMacSystemFont, Roboto, sans-serif;
 }
 
@@ -28,6 +29,7 @@ h1 {
     letter-spacing: 0.06em;
     font-weight: bold;
 }
+
 
 /* Style des éléments générer suite à un Event */
 
@@ -63,7 +65,7 @@ h1 {
 }
 
 .refresh {
-    background:  radial-gradient( rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%);
+    background: radial-gradient( rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%);
     color: rgb(255, 255, 255);
     cursor: pointer;
     font-family: inherit;
@@ -80,18 +82,17 @@ h1 {
     display: none;
 }
 
+
 /* Style du formulaire */
 
 .form_immo {
-    display: flex;
     font-family: inherit;
 }
- 
+
 .search_zone {
     border: 1px solid rgb(221, 221, 221);
     border-radius: 32px;
     color: rgb(34, 34, 34);
-    display: flex;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 16px 32px, rgba(0, 0, 0, 0.1) 0px 3px 8px;
     background-color: rgb(247, 247, 247);
@@ -100,7 +101,6 @@ h1 {
 
 .zone_input {
     color: rgb(34, 34, 34);
-    border-right: 1px solid #DDDDDD;
 }
 
 label {
@@ -113,7 +113,6 @@ label {
 }
 
 input {
-    display: block;
     background: none;
     font-weight: 600;
     color: #222222;
@@ -125,7 +124,7 @@ input {
 /* Style correspond aux bouttons */
 
 button {
-    background:  radial-gradient( rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%);
+    background: radial-gradient( rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%);
     color: rgb(255, 255, 255);
     cursor: pointer;
     display: block;
@@ -146,39 +145,221 @@ button {
     border-right: none;
 }
 
+
 /** MEDIA QUERIES **/
 
-@media only screen and (min-width: 640px){
- 
-     
-}
-     
-@media only screen and (min-width: 768px){
-     
-     
-}
-     
-@media only screen and (min-width: 1024px){
-     
-     
-}
-     
-@media only screen and (min-width: 1200px){
-
+@media screen and (max-width: 767px) {
     h1 {
         font-size: 46px;
         padding-top: 30px;
     }
-    
+    .catchphrase {
+        font-size: 28px;
+        margin-top: 6em;
+        text-align: center;
+        margin-left: 5em;
+        margin-right: 5em;
+    }
+    /* Style des éléments générer suite à un Event */
+    .profitability {
+        font-size: 25px;
+        padding-top: 28px;
+        padding-bottom: 20px;
+        margin: 50px auto;
+        width: 35vw;
+    }
+    .rent_year {
+        font-size: 9px;
+    }
+
+    /* Style du formulaire */
+    .form_immo {
+        margin-top: 8em;
+    }
+    .search_zone {
+        font-size: 14px;
+        width: 40%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .zone_input {
+        font-size: 14px;
+        line-height: 1.43;
+        margin: 20px 15px;
+        width: 95%;
+        border-bottom: 1px solid #DDDDDD;
+        padding-bottom: 5px;
+    }
+    label {
+        font-size: 12px;
+        padding-bottom: 5px;
+        letter-spacing: 0.04em;
+        width: 90%;
+    }
+    input {
+        border: 0px;
+        margin: 0px;
+        padding-left: 10px;
+        width: 85%;
+        font-size: 12px;
+    }
+    /* Style correspond aux bouttons */
+    button {
+        font-size: 16px;
+        line-height: 16px;
+        padding: 15px;
+        margin: auto;
+    }
+    .button {
+        padding: 16px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    h1 {
+        font-size: 46px;
+        padding-top: 30px;
+    }
+    .catchphrase {
+        font-size: 28px;
+        margin-top: 6em;
+        text-align: center;
+        margin-left: 5em;
+        margin-right: 5em;
+    }
+    /* Style des éléments générer suite à un Event */
+    .profitability {
+        font-size: 25px;
+        padding-top: 28px;
+        padding-bottom: 20px;
+        margin: 50px auto;
+        width: 35vw;
+    }
+    .rent_year {
+        font-size: 9px;
+    }
+    /* Style du formulaire */
+    .form_immo {
+        margin-top: 50px;
+    }
+    .search_zone {
+        font-size: 14px;
+        width: 40%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .zone_input {
+        font-size: 14px;
+        line-height: 1.43;
+        margin: 20px 15px;
+        width: 95%;
+        border-bottom: 1px solid #DDDDDD;
+        padding-bottom: 5px;
+    }
+    label {
+        font-size: 12px;
+        padding-bottom: 5px;
+        letter-spacing: 0.04em;
+        width: 90%;
+    }
+    input {
+        border: 0px;
+        margin: 0px;
+        padding-left: 10px;
+        width: 85%;
+        font-size: 12px;
+    }
+    /* Style correspond aux bouttons */
+    button {
+        font-size: 16px;
+        line-height: 16px;
+        padding: 15px;
+        margin: auto;
+    }
+    .button {
+        padding: 16px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    h1 {
+        font-size: 46px;
+        padding-top: 30px;
+    }
+    .catchphrase {
+        font-size: 30px;
+        margin-top: 215px;
+        margin-left: 5em;
+        width: 15vw;
+    }
+    /* Style des éléments générer suite à un Event */
+    .profitability {
+        font-size: 25px;
+        padding-top: 28px;
+        padding-bottom: 20px;
+        margin: 50px auto;
+        width: 35vw;
+    }
+    .rent_year {
+        font-size: 9px;
+    }
+    /* Style du formulaire */
+    .form_immo {
+        margin-top: 50px;
+    }
+    .search_zone {
+        font-size: 14px;
+        height: 70px;
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+    }
+    .zone_input {
+        font-size: 14px;
+        line-height: 1.43;
+        margin: 20px 15px;
+        width: 95%;
+        border-right: 1px solid #DDDDDD;
+    }
+    label {
+        font-size: 12px;
+        padding-bottom: 3px;
+        letter-spacing: 0.04em;
+        width: 95%;
+    }
+    input {
+        border: 0px;
+        margin: 0px;
+        padding-left: 10px;
+        width: 85%;
+        font-size: 12px;
+    }
+    /* Style correspond aux bouttons */
+    button {
+        font-size: 16px;
+        line-height: 16px;
+        padding: 15px;
+        margin: auto;
+    }
+    .button {
+        padding: 16px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    h1 {
+        font-size: 46px;
+        padding-top: 30px;
+    }
     .catchphrase {
         font-size: 35px;
         margin-top: 215px;
         margin-left: 5em;
         width: 15vw;
     }
-    
     /* Style des éléments générer suite à un Event */
-    
     .profitability {
         font-size: 25px;
         padding-top: 28px;
@@ -186,38 +367,33 @@ button {
         margin: 50px auto;
         width: 30vw;
     }
-    
     .rent_year {
         font-size: 11px;
     }
-    
     /* Style du formulaire */
-    
     .form_immo {
         margin-top: 50px;
     }
-     
     .search_zone {
         font-size: 14px;
         height: 66px;
         width: 70%;
         margin: 0 auto;
+        display: flex;
     }
-    
     .zone_input {
         font-size: 14px;
         line-height: 1.43;
         margin: 20px 15px;
         width: 95%;
+        border-right: 1px solid #DDDDDD;
     }
-    
     label {
         font-size: 12px;
         padding-bottom: 3px;
         letter-spacing: 0.04em;
         width: 95%;
     }
-    
     input {
         border: 0px;
         margin: 0px;
@@ -225,18 +401,14 @@ button {
         width: 90%;
         font-size: 12px;
     }
-    
     /* Style correspond aux bouttons */
-    
     button {
         font-size: 16px;
         line-height: 16px;
         padding: 15px;
         margin: auto;
     }
-    
     .button {
         padding: 16px;
     }
-     
 }
