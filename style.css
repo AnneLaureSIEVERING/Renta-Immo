@@ -1,22 +1,20 @@
 /* Style GENERAL correspond aux différents élements de la page */
 
-body,
-html {
+html, body {
     font-family: Circular, BlinkMacSystemFont, Roboto, sans-serif;
-}
-
-.container {
-    background-image: url(images/img-renta.webp);
+    background-image: url(images/pexels-immo.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: white;
+}
+
+.container {
     height: 100vh;
     width: 100vw;
 }
 
 h1 {
-    color: white;
+    color: rgb(65, 52, 52);
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
@@ -27,15 +25,15 @@ h1 {
     display: block;
     position: fixed;
     letter-spacing: 0.06em;
-    font-weight: bold;
+    font-weight: 600;
+    text-shadow: #413334 6px 4px 8px;
 }
-
 
 /* Style des éléments générer suite à un Event */
 
 .profitability {
     display: block;
-    color: black;
+    color: #413334;
     text-align: center;
     border-bottom: 1px solid #8B8B8B;
 }
@@ -52,7 +50,7 @@ h1 {
     top: 100%;
     width: 100vw;
     background: white;
-    transition: all 0.5s;
+    transition: all 2s;
     display: none;
 }
 
@@ -63,24 +61,6 @@ h1 {
 
 .display_results.transition-off {
     top: 100%;
-}
-
-.refresh {
-    background: radial-gradient( rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%);
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 16px;
-    outline: none;
-    overflow: hidden;
-    padding: 15px;
-    text-decoration: none;
-    border-radius: 24px;
-    margin: auto;
-    border: 2px solid grey;
-    display: none;
 }
 
 
@@ -116,16 +96,76 @@ label {
 input {
     background: none;
     font-weight: 600;
-    color: #222222;
+    color: #413334;
     outline-style: none;
     text-align: center;
 }
 
+/* Boutton pour clear le formulaire */
 
-/* Style correspond aux bouttons */
+.clear-form{
+    display: block;
+}
+  
+.leftright{
+    height: 4px;
+    width: 35px;
+    position: absolute;
+    margin-top: 20px;
+    background-color: #363233;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    transition: all .3s ease-in;
+}
+  
+.rightleft{
+    height: 4px;
+    width: 35px;
+    position: absolute;
+    margin-top: 20px;
+    background-color: #970019;
+    border-radius: 2px;
+    transform: rotate(-45deg);
+    transition: all .3s ease-in;
+}
+  
+.close{
+    color: white;
+    background-color: #363233;
+    font-size: .6em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all .3s ease-in;
+    opacity: 0;
+    margin: 40px 0 0 -2px;
+    border: none;
+    padding: 3px;
+    cursor: pointer;
+}
+  
+.close:focus {
+    text-decoration: none;
+    outline: none;
+    border: whitesmoke 1px solid;
+    box-shadow: none;
+}
+  
+.clear-form:hover .leftright{
+    transform: rotate(-45deg);
+    background-color: #363233;
+}
+.clear-form:hover .rightleft{
+    transform: rotate(45deg);
+    background-color: #970019;
+}
+.clear-form:hover .close{
+    opacity: 1;
+}  
 
-button {
-    background: radial-gradient( rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%);
+/* Style correspond au bouton calculer */
+
+#button {
+    background: radial-gradient(#bc001e, #960018,#960018, #870f22, #780013);
     color: rgb(255, 255, 255);
     cursor: pointer;
     display: block;
@@ -136,7 +176,7 @@ button {
     text-decoration: none;
     border-radius: 24px;
     margin: auto;
-    border: 2px solid grey;
+    border: 2px solid #363233;
 }
 
 .button {
@@ -150,14 +190,17 @@ button {
 /** MEDIA QUERIES **/
 
 @media screen and (min-width: 321px) and (max-width: 767px) {
+
     h1 {
-        font-size: 46px;
-        padding-top: 30px;
+        font-size: 25px;
+        padding-top: 8px;
     }
     .catchphrase {
-        font-size: 18px;
+        font-size: 16px;
         text-align: center;
-        margin-top: 1em;
+        margin-bottom: 0;
+        width: 95vw;
+        height: 5vh;
     }
 
     /* Style des éléments générer suite à un Event */
@@ -174,19 +217,19 @@ button {
 
     /* Style du formulaire */
     .form_immo {
-        margin-top: 1.5em;
+        margin: 1em auto;
+        height: 82vh;
+        width: 60vw;
     }
     .search_zone {
-        font-size: 14px;
-        width: 40%;
         margin: 0 auto;
         display: flex;
-        flex-direction: column;
+        flex-direction: column; 
     }
     .zone_input {
         font-size: 14px;
         line-height: 1.43;
-        margin: 20px 20px;
+        margin: 10px 20px;
         width: 80%;
         border-bottom: 1px solid #DDDDDD;
         padding-bottom: 5px;
@@ -205,14 +248,21 @@ button {
         font-size: 12px;
     }
     /* Style correspond aux bouttons */
-    button {
+    #button {
         font-size: 16px;
         line-height: 16px;
-        padding: 15px;
-        margin: auto;
+        padding: 12px;
+        margin: 0 auto;
     }
     .button {
-        padding: 16px;
+        padding: 10px;
+    }
+
+    .clear-form{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 10px;
+        display: block;
     }
 }
 
@@ -223,10 +273,10 @@ button {
     }
     .catchphrase {
         font-size: 28px;
-        margin-top: 6em;
+        margin-top: 3em;
+        height: 10vh;
+        width: 95vw;
         text-align: center;
-        margin-left: 5em;
-        margin-right: 5em;
     }
     /* Style des éléments générer suite à un Event */
     .profitability {
@@ -236,19 +286,20 @@ button {
         margin: 50px auto;
         width: 50vw;
     }
+
     .rent_year {
         font-size: 9px;
     }
+
     /* Style du formulaire */
     .form_immo {
         margin-top: 50px;
     }
     .search_zone {
-        font-size: 14px;
         width: 40%;
         margin: 0 auto;
         display: flex;
-        flex-direction: column;
+        flex-direction: column;        
     }
     .zone_input {
         font-size: 14px;
@@ -256,7 +307,7 @@ button {
         margin: 20px 15px;
         width: 95%;
         border-bottom: 1px solid #DDDDDD;
-        padding-bottom: 5px;
+        padding-bottom: 5px;  
     }
     label {
         font-size: 12px;
@@ -288,6 +339,7 @@ button {
         font-size: 46px;
         padding-top: 30px;
     }
+
     .catchphrase {
         font-size: 30px;
         margin-top: 215px;
@@ -306,11 +358,11 @@ button {
         font-size: 9px;
     }
     /* Style du formulaire */
+
     .form_immo {
         margin-top: 50px;
     }
     .search_zone {
-        font-size: 14px;
         height: 70px;
         width: 80%;
         margin: 0 auto;
@@ -348,11 +400,12 @@ button {
     }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px)  {
     h1 {
         font-size: 46px;
         padding-top: 30px;
     }
+
     .catchphrase {
         font-size: 35px;
         margin-top: 215px;
@@ -375,14 +428,13 @@ button {
         margin-top: 50px;
     }
     .search_zone {
-        font-size: 14px;
-        height: 66px;
-        width: 70%;
+        height: 75px;
+        width: 75%;
         margin: 0 auto;
         display: flex;
     }
     .zone_input {
-        font-size: 14px;
+        font-size: 12px;
         line-height: 1.43;
         margin: 20px 15px;
         width: 95%;
@@ -401,6 +453,7 @@ button {
         width: 90%;
         font-size: 12px;
     }
+
     /* Style correspond aux bouttons */
     button {
         font-size: 16px;
@@ -410,5 +463,35 @@ button {
     }
     .button {
         padding: 16px;
+    }
+    .clear-form {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media screen and (min-width: 1600px)  {
+    .container {
+        width: 1600px;
+        margin: auto;
+    }
+
+    .zone_input {
+        font-size: 14px;
+    }
+    label {
+        font-size: 14px;
+    }
+    input {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    .container {
+        width: 1600px;
+        margin: auto;
     }
 }

@@ -11,11 +11,23 @@ let classRent = document.querySelector('.rent_input');
 let classResults = document.querySelector('.classResults');
 let displayResults = document.querySelector('.display_results');
 let form = document.querySelector('.form_immo');
-let refresh = document.querySelector('.refresh');
 
 let nRent;
 let priceTotal;
 let pxFees;
+
+let state = {
+    isFormComputed: false,
+    isResultOpen: false
+};
+
+function setIsFormComputed(value) {
+    state.isFormComputed = value;
+}
+
+function setIsResultOpen(value) {
+    state.isResultOpen = value;
+}
 
 // calcul automatique du montant annuel que vont représenter les loyers
 function rentByYear(rt) {
@@ -29,7 +41,9 @@ function totaPriceImmo(px, ntx, agx, rdwk) {
 
 // Fonction qui permet de calculer le taux de rentabilité de l'investissement (en pourcentage)
 function profitability(pxTotal, rt) {
-    return Math.round(rt / pxTotal * 100);
+    let profi = (rt / pxTotal * 100);
+    let result = profi.toFixed(2);
+    return result;
 }
 
 // Fonction qui permet de calculer le montant de la rentabilité d'un investissement avec interet compose
@@ -67,25 +81,45 @@ function displayNotaryFees(valueFees) {
 }
 
 function displayRentByYear(valueRentByYear) {
-    let valueRent = document.createElement('p');
-    valueRent.setAttribute("class", "rent_year");
-    valueRent.textContent = '(équivaut à ' + valueRentByYear + ' € par an)';
-    classRent.appendChild(valueRent);
+    let valueRent = valueRentByYear;
+    if(state.isFormComputed) {
+        let newValue = document.getElementById('rent-1');
+        newValue.textContent = `(équivaut à ${valueRent} € par an)`;
+        return;
+    }
+    let displayValueRent = document.createElement('p');
+    displayValueRent.setAttribute("class", "rent_year");
+    displayValueRent.id = "rent-1";
+    displayValueRent.textContent = `(équivaut à ${valueRent} € par an)`;
+    classRent.appendChild(displayValueRent);
 }
 
 function displayProfitability(pxTotal, nRtx) {
     let profiTx = profitability(pxTotal, nRtx);
+    if(state.isResultOpen) {
+        let newValue = document.getElementById('prof-1');
+        newValue.textContent = `Rentabilité brute :  ${profiTx} %`;
+        return;
+    }
     let displayValueResult = document.createElement('p');
     displayValueResult.setAttribute("class", "profitability");
-    displayValueResult.textContent = 'Rentabilité brute : ' + profiTx + ' %';
+    displayValueResult.id = "prof-1";
+    displayValueResult.textContent = `Rentabilité brute :  ${profiTx} %`;
     classResults.appendChild(displayValueResult);
 }
 
 function displayAmountProfitability(pxTotal, nRent, nYear) {
     let valueAmount = interestCompose(pxTotal, nRent, nYear);
+    let valueRound = Math.round(valueAmount);
+    if(state.isResultOpen) {
+        let newValue = document.getElementById('prof-2');
+        newValue.textContent = `Rentabilité sur 10 ans : ${valueRound } €`;
+        return;
+    }
     let displayValueAmount = document.createElement('p');
     displayValueAmount.setAttribute("class", "profitability");
-    displayValueAmount.textContent = 'Rentabilité sur 10 ans : ' + Math.round(valueAmount) + ' €';
+    displayValueAmount.id = "prof-2";
+    displayValueAmount.textContent = `Rentabilité sur 10 ans : ${valueRound } €`;
     classResults.appendChild(displayValueAmount);
 }
 
@@ -95,11 +129,12 @@ function displayTransition() {
     if (getDisplayResultsValue.top === "100%") {
         displayResults.classList.add('transition-on');
         displayResults.style.display = "block";
-        refresh.style.display = "block";
         displayResults.classList.remove('transition-off');
+        setIsResultOpen(true);
     } else {
         displayResults.classList.add('transition-off');
         displayResults.classList.remove('transition-on');
+        setIsResultOpen(false);
     }
 }
 
@@ -108,6 +143,7 @@ rent.addEventListener('blur', (e) => {
     e.preventDefault;
     nRent = rentByYear(rent);
     displayRentByYear(nRent);
+    setIsFormComputed(true);
 });
 
 // Event qui va calculer automatiquement les frais de notaire selon le prix d'achat du bien
@@ -123,10 +159,6 @@ button.addEventListener('click', (e)=> {
     e.preventDefault;
     priceTotal = totaPriceImmo(price, notary, agency, roadworks);
     validateForm(price, agency, roadworks, rent);
-});
-
-refresh.addEventListener('click', () => {
-    window.location.reload();
 });
 
 
@@ -152,11 +184,7 @@ function validateForm(price, agency, roadworks, rent) {
     }
 
     if ( roadworks.value === '') {
-        roadworks.style.border = '2px solid #D30A64';
-        roadworks.style.borderRadius = '32px';
-        errorList.push(errorList.length + 1);
-    } else {
-        roadworks.style.border = 'none';
+        roadworks.value = 0;
     }
 
     if ( rent.value === '') {
@@ -170,7 +198,7 @@ function validateForm(price, agency, roadworks, rent) {
     if(errorList.length === 0) {
         displayProfitability(priceTotal, nRent);
         displayAmountProfitability(priceTotal, nRent, 10);
-        displayTransition();
+        if (!state.isResultOpen) displayTransition();
     } else {
         console.log("Certains champs du formulaire sont manquants");
     }

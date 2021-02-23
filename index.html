@@ -17,7 +17,7 @@
                 <div class="style_zone">
                     <div class="zone_input">
                         <label for="price"> Prix de l'investissement </label>
-                        <input type="number" id="price" name="immo_price" placeholder="Quel est le prix d'achat ?" required>
+                        <input type="number" id="price" name="immo_price" placeholder="Ajouter le prix d'achat" required>
                     </div>
                 </div>
                 <div class="style_zone">
@@ -35,13 +35,13 @@
                 <div class="style_zone">
                     <div class="zone_input">
                         <label for="roadworks"> Montant des travaux </label>
-                        <input type="number" id="roadworks" name="immo_roadworks" placeholder="Ajouter le montant" required>
+                        <input type="number" id="roadworks" name="immo_roadworks" placeholder="Ajouter le montant">
                     </div>
                 </div>
                 <div class="style_zone">
                     <div class="zone_input rent_input">
                         <label for="rent"> Loyer estimé </label>
-                        <input type="number" id="rent" name="immo_rent" placeholder="Quel est le loyer estimé ?" required>
+                        <input type="number" id="rent" name="immo_rent" placeholder="Ajouter le loyer estimé">
                     </div>
                 </div>
                 <div class="style_zone">
@@ -49,16 +49,21 @@
                         <button type="submit" id="button">Calculer</button>
                     </div>
                 </div>
+                <div class="clear-form">
+                    <div class="leftright"></div>
+                    <div class="rightleft"></div>
+                    <button type="reset" class="close" id="close-label">Clear</button>
+                </div>
             </div>
         </form>
+        
         <div class="catchphrase">
-            <p>Calculer la rentabilité immobilière de votre projet</p>
+            <p>Calculer la rentabilité immobilière de votre projet d'acquisition</p>
         </div>
     </section>
 
     <section class="display_results">
         <div class="classResults"></div>
-        <button class="refresh"> Refresh </button>
     </section>
 
     <script src="index.js"></script>
