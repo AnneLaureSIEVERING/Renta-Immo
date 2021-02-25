@@ -50,7 +50,7 @@ h1 {
     top: 100%;
     width: 100vw;
     background: white;
-    transition: all 2s;
+    transition: all 1s;
     display: none;
 }
 
@@ -205,14 +205,19 @@ input {
 
     /* Style des éléments générer suite à un Event */
     .profitability {
-        font-size: 20px;
-        padding-top: 28px;
-        padding-bottom: 20px;
+        font-size: 14px;
+        padding-top: 15px;
+        padding-bottom: 15px;
         margin: 20px auto;
         width: 90vw;
     }
     .rent_year {
         font-size: 9px;
+    }
+
+    .display_results.transition-on {
+        top: 80%;
+        height: 20vh;
     }
 
     /* Style du formulaire */
@@ -280,16 +285,21 @@ input {
     }
     /* Style des éléments générer suite à un Event */
     .profitability {
-        font-size: 25px;
-        padding-top: 28px;
-        padding-bottom: 20px;
-        margin: 50px auto;
-        width: 50vw;
+        font-size: 14px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin: 20px auto;
+        width: 90vw;
     }
-
     .rent_year {
         font-size: 9px;
     }
+
+    .display_results.transition-on {
+        top: 80%;
+        height: 20vh;
+    }
+
 
     /* Style du formulaire */
     .form_immo {
