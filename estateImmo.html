@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Renta-Immo</title>
+</head>
+<body>
+    <section class="container">
+        <h1>Renta-Immo</h1>
+
+    <!-- Formulaire pour la simulation du crédit immobilier -->
+
+    <form class="estate-loan" action="#">
+        <div class="search_zone">
+            <div class="style_zone">
+                <div class="zone_input">
+                    <label for="amountImmo">Montant achat</label>
+                    <input type="text" id="amountImmo" name="amountImmo" placeholder="Ajouter le montant de l'achat">
+                </div>
+            </div>
+            <div class="style_zone">
+                <div class="zone_input">
+                    <label for="amountperso">Montant de l'apport</label>
+                    <input type="text" id="amountperso" name="amountperso" placeholder="Ajouter le montant de votre apport">
+                </div>
+            </div>
+            <div class="style_zone">
+                <div class="zone_input">
+                    <label for="roadworksImmo"> Montant des travaux estimé</label>
+                    <input type="text" id="roadworksImmo" name="roadworksImmo" placeholder="Ajouter le montant des travaux">
+                </div>
+            </div>
+            <div class="style_zone">
+                <div class="zone_input">
+                    <label for="duration">Durée du prêt souhaitée</label>
+                    <select name="duration" id="duration">
+                        <option value="">--Choisissez une durée--</option>
+                        <option value="dix">10 ans</option>
+                        <option value="quinze">15 ans</option>
+                        <option value="vingt">20 ans</option>
+                        <option value="vingt-cinq">25 ans</option>
+                    </select>
+                </div>
+            </div>
+            <div class="style_zone">
+                <div class="button">
+                    <button type="submit" id="button">Calculer</button>
+                </div>
+            </div>
+            <div class="clear-form">
+                <div class="leftright"></div>
+                <div class="rightleft"></div>
+                <button type="reset" class="close" id="close-label">Clear</button>
+            </div>
+        </div>
+    </form>
+    
+    <div class="catchphrase">
+        <p>Faite une simulation de prêt immobilier</p>
+    </div>
+    </section>
+
+<section class="display_results">
+    <div class="classResults"></div>
+</section>
+
+<script src="estate.js"></script>
+    
+</body>
+</html>
