@@ -1,11 +1,8 @@
 'use strict';
 
 let amountLoan = document.querySelector('#amountImmo');
-let amountPerso = document.querySelector('#amountperso');
-let roadworks = document.querySelector('#roadworksImmo');
 let duration = document.querySelector('#duration');
 
-let classRent = document.querySelector('.rent_input');
 let classResults = document.querySelector('.classResults');
 let displayResults = document.querySelector('.display_results');
 
@@ -30,39 +27,40 @@ function setIsResultOpen(value) {
 // fonction pour calculer le taux d'intérêt à appliquer
 function interestRate(duration) {
     let durationValue = duration.value;
-    console.log(durationValue);
+    // console.log(durationValue);
 
     switch(true) {
         case (durationValue == 10):
-            return intRate = 0.0065;
+            return intRate = 0.65;
 
         case (durationValue == 15):
-            return intRate = 0.0085;
+            return intRate = 0.85;
 
         case (durationValue == 20):
-            return intRate = 0.0102;
+            return intRate = 1.02;
         
         case(durationValue == 25):
-            return intRate = 0.0126;
+            return intRate = 1.26;
 
         default:
             console.log('erreur dans le switch');
     }
 }
 
-// fonction pour calculer le capital à emprunter
-function estateLoanAmount(px, rdworks, contrib) {
-    return Number(px.value + rdworks.value) - Number(contrib.value);
-}
-
 // fonction pour calculer le montant de la mensualité du prêt
 function amountMonthlyPaiement(rate, estAmount, durate) {
-    return monthlyPayment = ((estAmount * rate)/12) / Math.pow(1-(1+(intRate/12)), durate.value);
+    // m = [(M*t)/12] / [1-(1+(t/12))^-n].
+    let durateEstate = -12 * Number(durate.value);
+    let tauxByMonth = rate / 12;
+    let tauxTest = 1.10 / 12;
+    let test = (100000 * tauxTest) / ((1+tauxTest) ** -240);
+    console.log(test);
+    return monthlyPayment = (estAmount*tauxByMonth) / Math.pow((1+tauxByMonth),durateEstate);
 }
 
 // fonction pour calculer le montant total des intérêts
-function totalOfInterest(durate, monthlyP, contrib) {
-    return 12 * durate.value * monthlyP - contrib.value;
+function totalOfInterest(durate, monthlyP, estAmount) {
+    return (12 * Number(durate.value) * monthlyP) - estAmount;
 }
 
 function displayMonthlyPaiement(rate, estAmount, durate) {
@@ -79,8 +77,8 @@ function displayMonthlyPaiement(rate, estAmount, durate) {
     classResults.appendChild(displayValueResult);
 }
 
-function displayAmountInterest(durate, monthlyP, contrib) {
-    let valueInterest = totalOfInterest(durate, monthlyP, contrib);
+function displayAmountInterest(durate, monthlyP, estAmount) {
+    let valueInterest = totalOfInterest(durate, monthlyP, estAmount);
     if(state.isResultOpen) {
         let newValue = document.getElementById('prof-2');
         newValue.textContent = `Montant total des intérêts : ${valueInterest} €`;
@@ -111,36 +109,23 @@ function displayTransition() {
 // Event au clic sur le boutton "calculer"
 button.addEventListener('click', (e)=> {
     e.preventDefault;
+    estateAmount = Number(amountLoan.value);
     interestRate(duration);
-    estateAmount = estateLoanAmount(amountLoan, roadworks, amountPerso);
-    console.log(estateAmount);
-    validateForm(amountLoan, amountPerso, roadworks, duration);
+    validateForm(amountLoan, duration);
 });
 
 
 // Gestion des erreurs 
-function validateForm(amLoan, amContrib, roadworks, durate) {
+function validateForm(amtLoan, durate) {
 
     let errorList = [];
 
-    if( amLoan.value === '' ) {
-        amLoan.style.border = '2px solid #D30A64';
-        amLoan.style.borderRadius = '32px';
+    if( amtLoan.value === '' ) {
+        amtLoan.style.border = '2px solid #D30A64';
+        amtLoan.style.borderRadius = '32px';
         errorList.push(errorList.length + 1);
     } else {
-        amLoan.style.border = 'none';
-    }
-
-    if ( amContrib.value === '') {
-        amContrib.style.border = '2px solid #D30A64';
-        amContrib.style.borderRadius = '32px';
-        errorList.push(errorList.length + 1);
-    } else {
-        amContrib.style.border = 'none';
-    }
-
-    if ( roadworks.value === '') {
-        roadworks.value = 0;
+        amtLoan.style.border = 'none';
     }
 
     if ( durate.value === '') {
@@ -153,7 +138,7 @@ function validateForm(amLoan, amContrib, roadworks, durate) {
 
     if(errorList.length === 0) {
         displayMonthlyPaiement(intRate, estateAmount, duration);
-        displayAmountInterest(duration, monthlyPayment, amountPerso);
+        displayAmountInterest(duration, monthlyPayment, estateAmount);
         if (!state.isResultOpen) displayTransition();
     } else {
         console.log("Certains champs du formulaire sont manquants");
