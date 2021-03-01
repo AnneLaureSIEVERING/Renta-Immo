@@ -31,16 +31,16 @@ function interestRate(duration) {
 
     switch(true) {
         case (durationValue == 10):
-            return intRate = 0.65;
+            return intRate = 0.0075;
 
         case (durationValue == 15):
-            return intRate = 0.85;
+            return intRate = 0.0095;
 
         case (durationValue == 20):
-            return intRate = 1.02;
+            return intRate = 0.0110;
         
         case(durationValue == 25):
-            return intRate = 1.26;
+            return intRate = 0.0135;
 
         default:
             console.log('erreur dans le switch');
@@ -52,15 +52,16 @@ function amountMonthlyPaiement(rate, estAmount, durate) {
     // m = [(M*t)/12] / [1-(1+(t/12))^-n].
     let durateEstate = -12 * Number(durate.value);
     let tauxByMonth = rate / 12;
-    let tauxTest = 1.10 / 12;
-    let test = (100000 * tauxTest) / ((1+tauxTest) ** -240);
-    console.log(test);
-    return monthlyPayment = (estAmount*tauxByMonth) / Math.pow((1+tauxByMonth),durateEstate);
+    monthlyPayment = (estAmount*tauxByMonth) / (1-(1+tauxByMonth) ** durateEstate);
+    let resultAmountMonthly = monthlyPayment.toFixed(2);
+    return resultAmountMonthly;
 }
 
 // fonction pour calculer le montant total des intérêts
-function totalOfInterest(durate, monthlyP, estAmount) {
-    return (12 * Number(durate.value) * monthlyP) - estAmount;
+function totalOfInterest(durate, estAmount, rate) {
+    let interestAmount = estAmount * rate * Number(durate.value)
+    let totalInterest = interestAmount.toFixed(2);
+    return totalInterest;
 }
 
 function displayMonthlyPaiement(rate, estAmount, durate) {
@@ -77,8 +78,8 @@ function displayMonthlyPaiement(rate, estAmount, durate) {
     classResults.appendChild(displayValueResult);
 }
 
-function displayAmountInterest(durate, monthlyP, estAmount) {
-    let valueInterest = totalOfInterest(durate, monthlyP, estAmount);
+function displayAmountInterest(durate, estAmount, rate) {
+    let valueInterest = totalOfInterest(durate, estAmount, rate);
     if(state.isResultOpen) {
         let newValue = document.getElementById('prof-2');
         newValue.textContent = `Montant total des intérêts : ${valueInterest} €`;
@@ -138,7 +139,7 @@ function validateForm(amtLoan, durate) {
 
     if(errorList.length === 0) {
         displayMonthlyPaiement(intRate, estateAmount, duration);
-        displayAmountInterest(duration, monthlyPayment, estateAmount);
+        displayAmountInterest(duration, estateAmount, intRate);
         if (!state.isResultOpen) displayTransition();
     } else {
         console.log("Certains champs du formulaire sont manquants");
