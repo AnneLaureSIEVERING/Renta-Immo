@@ -10,8 +10,6 @@ let button = document.querySelector('#button');
 let classRent = document.querySelector('.rent_input');
 let classResults = document.querySelector('.classResults');
 let displayResults = document.querySelector('.display_results');
-let form = document.querySelector('.form_immo');
-let swiper = document.querySelector('.swiper');
 
 let nRent;
 let priceTotal;

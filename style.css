@@ -66,6 +66,10 @@ h1 {
 
 /* Style du formulaire */
 
+form {
+    margin-top: 2em;
+}
+
 .form_immo {
     font-family: inherit;
 }

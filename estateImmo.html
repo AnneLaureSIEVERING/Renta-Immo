@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Renta-Immo</title>
+</head>
+<body>
+    <section class="container">
+        <h1>Renta-Immo</h1>
+
+    <!-- Formulaire pour la simulation du crédit immobilier -->
+
+    <form class="estate-loan" action="#" onsubmit="return false">
+        <div class="search_zone">
+            <div class="style_zone">
+                <div class="zone_input">
+                    <label for="amountImmo">Montant emprunté</label>
+                    <input type="text" id="amountImmo" name="amountImmo" placeholder="Ajouter le montant emprunté" required>
+                </div>
+            </div>
+
+            <div class="style_zone">
+                <div class="zone_input">
+                    <label for="duration">Durée du prêt souhaitée</label>
+                    <select name="duration" id="duration">
+                        <option value="">--Choisissez une durée--</option>
+                        <option value="10">10 ans</option>
+                        <option value="15">15 ans</option>
+                        <option value="20">20 ans</option>
+                        <option value="25">25 ans</option>
+                    </select>
+                </div>
+            </div>
+            <div class="style_zone">
+                <div class="button">
+                    <button type="submit" id="button">Calculer</button>
+                </div>
+            </div>
+            <div class="clear-form">
+                <div class="leftright"></div>
+                <div class="rightleft"></div>
+                <button type="reset" class="close" id="close-label">Clear</button>
+            </div>
+        </div>
+    </form>
+    
+    <div class="catchphrase">
+        <p>Faite une simulation de prêt immobilier</p>
+    </div>
+    </section>
+
+<section class="display_results">
+    <div class="classResults"></div>
+</section>
+
+<script src="estate.js"></script>
+    
+</body>
+</html>
